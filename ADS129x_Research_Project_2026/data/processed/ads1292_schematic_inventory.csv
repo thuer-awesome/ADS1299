@@ -1,0 +1,23 @@
+source_file,record_type,observed_item,observed_value_or_net,evidence_location,interpretation,confidence,action
+DEMO.SchDoc,component,ADS1292-QFN,ADS1292R,FileHeader RECORD=1 INDEXINSHEET=107,Symbol library is ADS1292-QFN and comment says ADS1292R; confirm actual silicon marking,high,Photograph IC top mark
+DEMO.SchDoc,component,STM32L442KxU6,STM32L442KCU6,FileHeader RECORD=1 INDEXINSHEET=185,MCU symbol and comment are L442 not L432,high,Confirm assembly BOM and MCU top mark
+DEMO.SchDoc,component,RF-BM-4044B4,RF-BM-4044B4,FileHeader RECORD=1 INDEXINSHEET=206,Current BLE module is 4044B4 rather than BG22A1/A3,high,Obtain 4044B4 datasheet and pinout
+DEMO.SchDoc,component,LDO-XC6206,XC6206P33,FileHeader component comment,3.3V LDO is present,high,Check load and dropout against all rails
+DEMO.SchDoc,net,ADS129x_DIN,net label,FileHeader RECORD=18 INDEXINSHEET=132,ADS1292 serial data input label,high,Trace to MCU netlist
+DEMO.SchDoc,net,ADS129x_DOUT,net label,FileHeader RECORD=18 INDEXINSHEET=131,ADS1292 serial data output label,high,Trace to MCU netlist
+DEMO.SchDoc,net,ADS129x_SCLK,net label,FileHeader RECORD=18 INDEXINSHEET=130,ADS1292 serial clock label,high,Trace to MCU netlist
+DEMO.SchDoc,net,ADS129x_CS,net label,FileHeader RECORD=18 INDEXINSHEET=133,ADS1292 chip select label,high,Trace to MCU netlist
+DEMO.SchDoc,net,ADS129x_DRDY,net label,FileHeader RECORD=18 INDEXINSHEET=129,ADS1292 data-ready label,high,Trace to MCU EXTI
+DEMO.SchDoc,net,CLKSEL,net label,FileHeader RECORD=18 INDEXINSHEET=32,Clock source selection note is present,medium,Confirm pull resistor and clock source
+DEMO.SchDoc,capacitor,C50,0.1u,FileHeader component index 50,Local decoupling candidate,medium,Resolve reference designator and rail
+DEMO.SchDoc,capacitor,C51,1u,FileHeader component index 51,Local bypass candidate,medium,Resolve reference designator and rail
+DEMO.SchDoc,capacitor,C57,1.5n,FileHeader component index 57,Observed RLD/BIAS stability capacitor candidate,medium,Trace to RLDOUT net
+DEMO.SchDoc,capacitor,C58/C59,4.7n,FileHeader component indexes 58/59,Observed input/PGA filter candidates,medium,Trace each to channel and compare p.21-23
+DEMO.SchDoc,capacitor,C70/C73/C84,47p,FileHeader component indexes 70/73/84,Observed oscillator/load capacitors,medium,Trace to 4404B or clock net
+DEMO.SchDoc,resistor,R60,1M,FileHeader component index 60,Observed RLD output resistor candidate,medium,Trace to RLDOUT and compare p.24-25
+DEMO.SchDoc,resistor,R61,100K,FileHeader component index 61,Observed RLD/lead-off resistor candidate,medium,Trace to RLD network
+DEMO.SchDoc,resistor,R69/R72/R79/R83,22.1K,FileHeader component indexes 69/72/79/83,Repeated channel resistor candidate,medium,Trace to each input and calculate noise
+DEMO.SchDoc,resistor,R105/R125/R145/R166/R167/R263,10K,FileHeader component indexes,Pull-up or control resistor candidates,low,Resolve nets from netlist
+DEMO.SchDoc,resistor,R141,3K,FileHeader component index 141,Series/control resistor candidate,low,Resolve net from netlist
+DEMO.SchDoc,resistor,R211,4.7K,FileHeader component index 211,UART/control resistor candidate,low,Resolve net from netlist
+DEMO.SchDoc,edit_note,修改内容.txt,去掉蓝牙天线；旋转芯片方向；调整焊盘位置,GBK decoded text file,Mechanical/RF/assembly changes are documented but not electrically revalidated,high,Recheck antenna keepout and pin-1 orientation

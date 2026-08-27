@@ -1,0 +1,27 @@
+version,address,register,reset_or_known_id,project_baseline,rationale,datasheet_page,verification_method,status
+ADS1299,0x00,ID,0x3E,0x3E,Confirm silicon identity,6-7;44-45,RREG and log raw byte,OPEN
+ADS1299,0x01,CONFIG1,reset per DS,0xD5 legacy firmware,Legacy value is HR/DR setting; verify intended SPS,46,RREG after SDATAC,OPEN
+ADS1299,0x02,CONFIG2,reset per DS,0xD0 legacy firmware,Test/reference bits must match test mode,47,RREG and internal test waveform,OPEN
+ADS1299,0x03,CONFIG3,reset per DS,0xEC legacy firmware,Reference and BIAS bits require rail verification,48,RREG and measure VREF/BIAS,OPEN
+ADS1299,0x04,LOFF,0x00,0x00,Start with lead-off off,49,Read status then enable per matrix,OPEN
+ADS1299,0x05-0x0C,CH1SET-CH8SET,reset per DS,0x01 input short for baseline,Use mux=001 for noise; 0x60 only legacy Gain24,50,RREG all channels,OPEN
+ADS1299,0x0D-0x0E,BIAS_SENSP/SENSN,0x00,0x00,BIAS disabled baseline,51-52,RREG and BIASOUT scope,OPEN
+ADS1299,0x0F-0x10,LOFF_SENSP/SENSN,0x00,0x00,Lead-off off baseline,53-54,Enable one side at a time,OPEN
+ADS1299,0x14,GPIO,0x00,0x00,GPIO low/output baseline,58,RREG and pin level,OPEN
+ADS1299,0x15,MISC1,0x00,0x20 legacy firmware,SRB1 use must be intentional,59,RREG and inspect SRB routing,OPEN
+ADS1299,0x17,CONFIG4,0x00,0x00,Default baseline,60,RREG,OPEN
+ADS1298,0x00,ID,0x92,0x92,Confirm silicon identity,10-11;65-68,RREG and log raw byte,OPEN
+ADS1298,0x01,CONFIG1,reset per DS,0xC6 legacy firmware,HR/external clock/500SPS comment requires timing check,69-70,RREG and DRDY frequency,OPEN
+ADS1298,0x02,CONFIG2,reset per DS,0x10 legacy firmware,Internal test mode comment requires waveform check,69-70,RREG and test signal,OPEN
+ADS1298,0x03,CONFIG3,reset per DS,0xCC legacy firmware,Reference/RLD bits require rail check,69,RREG and VREF/RLD test,OPEN
+ADS1298,0x04,LOFF,reset per DS,0x02 legacy firmware,Lead-off disabled baseline must be confirmed,70,RREG and status,OPEN
+ADS1298,0x05-0x0C,CH1SET-CH8SET,reset per DS,0x00 legacy firmware,Normal input; use documented short mux for noise,71,RREG all channels,OPEN
+ADS1298,0x0D-0x0E,RLD_SENSP/SENSN,0x00,0x00,RLD disabled baseline,72-73,RREG and RLDOUT scope,OPEN
+ADS1298,0x0F-0x10,LOFF_SENSP/SENSN,0x00,0xFF legacy firmware,Must test whether all sense bits are intentional,72-76,RREG and electrode model,OPEN
+ADS1298,0x14,GPIO,0x00,0x00,GPIO low/output baseline,79,RREG and pin level,OPEN
+ADS1292,0x00,ID,DS-VERIFY,DS-VERIFY,No confirmed firmware source in current workspace,39-40,Read ID before any configuration,OPEN
+ADS1292,0x01,CONFIG1,DS-VERIFY,DS-VERIFY,Set DR/clock divider only after MCU clock is known,40,SDATAC/WREG/RREG and DRDY period,OPEN
+ADS1292,0x02,CONFIG2,DS-VERIFY,DS-VERIFY,Reference and test signal differ from 1298/1299,41,Readback and internal test waveform,OPEN
+ADS1292,0x03,LOFF,DS-VERIFY,DS-VERIFY,Lead-off threshold/current,42,RREG and 51k/47n model,OPEN
+ADS1292,CH1/CH2,CHnSET,DS-VERIFY,DS-VERIFY,Two-channel mux/gain must be confirmed from DS,43-44,RREG and input short,OPEN
+ADS1292,RLD_SENS,RLD sense,DS-VERIFY,DS-VERIFY,Do not use ADS1298 RLD addresses blindly,45,Configure one channel and scope RLDOUT,OPEN

@@ -1,0 +1,6 @@
+hardware/source/**/*.PrjPCB filter=lfs diff=lfs merge=lfs -text
+hardware/source/**/*.PcbLib filter=lfs diff=lfs merge=lfs -text
+hardware/source/**/*.SCHLIB filter=lfs diff=lfs merge=lfs -text
+hardware/source/**/*.zip filter=lfs diff=lfs merge=lfs -text
+hardware/source/**/*.SchDoc filter=lfs diff=lfs merge=lfs -text
+hardware/source/**/*.PcbDoc filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,13 @@
+# 原始大文件保留在外部资料目录；如需纳入 Git，使用 Git LFS 并记录哈希
+data/raw/**/*.pdf
+data/raw/**/*.SchDoc
+data/raw/**/*.PcbDoc
+data/raw/**/*.zip
+data/processed/**/*.bin
+data/processed/**/*.wav
+data/processed/**/*.sal
+data/processed/**/*.wfm
+*.tmp
+*.bak
+__pycache__/
+*.pyc

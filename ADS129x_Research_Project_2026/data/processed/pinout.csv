@@ -1,0 +1,28 @@
+version,device_pin_or_net,function,datasheet_page,source_class,current_project_mapping,test_point,verification_status,notes
+ADS1299,IN1P/IN1N..IN8P/IN8N,differential analog inputs,6-7;20-23,DS-REQ,AFE input connector via project RC/protection,TP_INxP/TP_INxN,OPEN,Verify every channel netlist and leakage
+ADS1299,SRB1/SRB2,common reference routing,6-7;20;59,DS-REQ,Project schematic contains nets; exact jumpers pending,TP_SRB1/TP_SRB2,OPEN,Do not short all channels by default
+ADS1299,BIASIN/BIASINV/BIASOUT/BIASREF,BIAS drive and sense,6-7;28-37,DS-REQ/TI-TYP,Present in DV4.0.2 schematic; values require BOM audit,TP_BIASOUT,OPEN,220k and 1M/1.5n are typical only
+ADS1299,VREFP/VREFN,internal reference,6-7;24;70-71,DS-REQ,Present in schematic,TP_VREFP/TP_VREFN,OPEN,VREFN returns to AVSS
+ADS1299,VCAP1,charge-pump/reference bypass,6-7;70-71,DS-REQ/TI-TYP,Suspected 10uF in old drawing; target 100uF,TP_VCAP1,P0,Use non-ferroelectric capacitor in vibration
+ADS1299,VCAP2/VCAP3/VCAP4,internal bypass,6-7;70-71,TI-TYP,1uF; 1uF+0.1uF; 1uF in project notes,TP_VCAP2/3/4,OPEN,No external load
+ADS1299,AVDD/AVDD1/AVSS/AVSS1,analog supply and return,6-8;70-73,DS-REQ,Present in schematic; star connection pending,TP_AVDD/TP_AVSS,OPEN,AVDD-AVSS must be 4.75-5.25V
+ADS1299,DVDD/DGND,digital supply and return,6-8;70-73,DS-REQ,MCU digital rail,TP_DVDD/TP_DGND,OPEN,DVDD 1.8-3.6V
+ADS1299,CLK/CLKSEL,master clock selection,6-7;27,DS-REQ,Clock net present; default level pending,TP_CLK/TP_CLKSEL,OPEN,External clock target 2.048MHz
+ADS1299,DIN/DOUT/SCLK/CS,SPI,6-7;38-43,DS-REQ,STM32F103 PA7/PA6/PA5/PB0,TP_DIN/TP_DOUT/TP_SCLK/TP_CS,OPEN,Start 1-4MHz and verify CPHA
+ADS1299,DRDY,data ready active low,6-7;34-37,DS-REQ,STM32F103 PA0 EXTI0,TP_DRDY,OPEN,27-byte frame per pulse
+ADS1299,RESET/PWDN/START,control,6-7;34-37;61-62,DS-REQ,RESET PA4; PWDN/START schematic labels need netlist proof,TP_RESET/TP_PWDN/TP_START,P0,No control input may float
+ADS1298,IN1P/IN1N..IN8P/IN8N,differential analog inputs,10-11;25-29,DS-REQ,Seventh-generation AFE connectors,TP_INxP/TP_INxN,OPEN,Use ADS1298 input mux codes
+ADS1298,RLDREF/RLDINV/RLDIN/RLDOUT,right-leg drive,10-11;34-35;39-43,DS-REQ/TI-TYP,Do not reuse ADS1299 BIAS naming,TP_RLDOUT,OPEN,RLD network values are typical
+ADS1298,PACE_OUT1/2/WCT,pace and Wilson terminal,10-11,DS-REQ,Exact netlist pending,TP_PACE/TP_WCT,OPEN,17/18 are not ADS1299 SRB pins
+ADS1298,VCAP1,internal bypass,10-11;96-97,TI-TYP,Existing screenshot shows 10uF; target 22uF,TP_VCAP1,P0,Audit footprint and BOM
+ADS1298,SPI3 PB3/PB4/PB5,SCLK/MISO/MOSI,51-63,DS-REQ,STM32L432 firmware mapping;主体 SchDoc MCU comment is STM32L442KCU6,TP_SPI3,OPEN,AF6 and actual package must be verified
+ADS1298,CS/DRDY/RESET,control,51-63,DS-REQ,CS PA15; DRDY PA11; RESET PB6,TP_CS/TP_DRDY/TP_RESET,OPEN,27-byte frame
+ADS1292,PGA1N/PGA1P/PGA2N/PGA2P,2-channel analog inputs,11-12;17-23,DS-REQ,Current DEMO schematic,TP_IN1/TP_IN2,OPEN,Use ADS1292 pinout only
+ADS1292,RLDIN/RLDREF/RLDINV/RLDOUT,RLD,11-12;24-25;50-56,DS-REQ/TI-TYP,Current schematic requires netlist export,TP_RLDOUT,OPEN,PWDN/RESET is shared pin
+ADS1292,VCAP1/VCAP2,internal bypass,11-12;60-61,TI-TYP,Current values require netlist/BOM check,TP_VCAP1/TP_VCAP2,OPEN,Typical 10uF/1uF
+ADS1292,DIN/DOUT/SCLK/CS,SPI,11-12;28-39,DS-REQ,DEMO.SchDoc contains SPI1 and SPI3 labels; actual net mapping pending,TP_SPI,OPEN,9-byte frame
+ADS1292,DRDY/START/CLKSEL,conversion control,11-12;31-35;62-63,DS-REQ,MCU mapping not yet confirmed,TP_DRDY/TP_START/TP_CLK,OPEN,External clock target 512kHz
+BG22A1/A3,VCC/GND,module supply,7;9-10 hardware guide,DS-REQ,3.3V rail in sixth/seventh generation; SchDoc comment is BG22A3,TP_BLE_VCC,OPEN,Confirm actual module variant
+BG22A1/A3,PA05/PA06,TX/RX,12 protocol guide,DS-REQ,UART2 PA2/PA3 via MCU,TP_BLE_TX/TP_BLE_RX,OPEN,8N1; 460800 project setting
+BG22A1/A3,PA03/PA04,CTS/RTS flow control,12;68-70 protocol guide,DS-REQ,Gen7 CTS PA0; RTS not evidenced; Gen6 none,TP_CTS/TP_RTS,P0,Direction and polarity must be verified
+RF-BM-4044B4,TX/RX/RTS/CTS/LINK/EN/RST,unknown BLE module interface,4044B4 datasheet required,MEAS-REQ,ADS1292 SchDoc labels only; electrical mapping not proven,TP_BLE_ALL,P0,Do not apply BG22A voltage or AT assumptions until datasheet is obtained

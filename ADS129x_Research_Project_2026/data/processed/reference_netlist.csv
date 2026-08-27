@@ -1,0 +1,36 @@
+version,net_name,source_pin_or_function,target_pin_or_function,component_or_value,source_class,datasheet_page,layout_requirement,existing_project_evidence,assembly_status
+ADS1299,AVDD_5V,AVDD pins 19/21/22/56/59,AVDD regulator output,5.0V low-noise rail,DS-REQ,p.6-8;70-71,Analog island with 10uF+0.1uF at pins,Present in schematic strings,REVIEW
+ADS1299,AVSS_AGND,AVSS pins 20/23/32/53/57/58,analog ground,AGND,DS-REQ,p.6-8;70-73,Single-point return near ADC,Present in schematic strings,REVIEW
+ADS1299,AVDD1_STAR,AVDD1 pin 54,AVDD via star,0R or short star link,DS-REQ,p.70-73,No digital return through link,Present in schematic strings,REVIEW
+ADS1299,AVSS1_STAR,AVSS1 pin 53,AVSS via star,0R or short star link,DS-REQ,p.70-73,Place at ADC not power entry,Present in schematic strings,REVIEW
+ADS1299,DVDD_3V3,DVDD pins 48/50,3.3V digital rail,10uF+0.1uF,DS-REQ,p.8;70-71,Keep digital island separate,Present in schematic strings,REVIEW
+ADS1299,VREF,VREFP pin 24,VREFN pin 25,>=10uF,DS-REQ/TI-TYP,p.24;70-71,Short local loop,Present in schematic strings,REVIEW
+ADS1299,VCAP1,VCAP1 pin 28,AVSS,100uF non-ferroelectric,DS-REQ/TI-TYP,p.70-71,No external load; TP,10uF/22uF candidates observed; exact net pending,P0
+ADS1299,VCAP2,VCAP2 pin 30,AVSS,1uF,TI-TYP,p.70-71,Place at pin,Present in schematic strings,REVIEW
+ADS1299,VCAP3,VCAP3 pin 55,AVSS,1uF+0.1uF,TI-TYP,p.70-71,Place at pin,Present in schematic strings,REVIEW
+ADS1299,VCAP4,VCAP4 pin 26,AVSS,1uF,TI-TYP,p.70-71,Place at pin,Present in schematic strings,REVIEW
+ADS1299,SPI_SCLK,SCLK pin 40,STM32F103 PA5,22-47R optional,DS-REQ,p.38-43,Short controlled trace,Net label present,REVIEW
+ADS1299,SPI_MOSI,DIN pin 34,STM32F103 PA7,22-47R optional,DS-REQ,p.38-43,Digital return continuous,Net label present,REVIEW
+ADS1299,SPI_MISO,DOUT pin 43,STM32F103 PA6,22-47R optional,DS-REQ,p.38-43,Short trace,Net label present,REVIEW
+ADS1299,SPI_CS,CS pin 39,STM32F103 PB0,10k pull-up project option,DS-REQ,p.38-43,CS high during reset,Net label present,REVIEW
+ADS1299,DRDY,DRDY pin 47,STM32F103 PA0 EXTI0,10k pull-up if required,DS-REQ,p.34-37,Keep away from analog inputs,Net label present,REVIEW
+ADS1299,RESET,RESET pin 36,STM32F103 PA4,10k pull-up and TP,DS-REQ,p.34-37;61-62,Short path,Net label present,REVIEW
+ADS1299,PWDN,PWDN pin 35,MCU GPIO or defined high,10k pull-up plus test jumper,DS-REQ,p.34-37;61-62,Must not float,Label present; wire pending,P0
+ADS1299,START,START pin 38,MCU GPIO or defined low,10k pull-down plus TP,DS-REQ,p.34-37,Must not float,Label pending,P0
+ADS1299,CLK,CLK pin 37,2.048MHz oscillator,external clock buffer,DS-REQ,p.8;27,Keep short and shielded,Clock net pending,P0
+ADS1299,CLKSEL,CLKSEL pin 52,logic low for external clock,10k pull-down,DS-REQ,p.27,Defined before power,Label pending,P0
+ADS1299,DAISY_IN,DAISY_IN pin 41,DGND,0R to DGND,DS-REQ,p.61;64-65,Do not leave floating,Label present,REVIEW
+ADS1299,RESV1,RESV1 pin 31,DGND,0R to DGND,DS-REQ,p.6-7;61,No test load,Label pending,REVIEW
+ADS1298,AVDD,AVDD pins,selected analog rail,3V or 5V plus local bypass,DS-REQ,p.12;96-97,Quiet analog island,Netlist pending,OPEN
+ADS1298,VCAP1,VCAP1 pin,AVSS,22uF,TI-TYP,p.96-97,C171=22uF candidate; confirm with netlist,SchDoc inventory suggests 22uF,REVIEW
+ADS1298,SPI3,SCLK/MISO/MOSI,STM32L432 PB3/PB4/PB5,22-47R optional,DS-REQ,p.51-63,AF6 verified,Code mapping,REVIEW
+ADS1298,CS_DRDY_RESET,CS/DRDY/RESET,PA15/PA11/PB6,GPIO controls,DS-REQ,p.51-63,Test points,Code mapping,REVIEW
+ADS1298,MCU_ID,STM32L442KxU6 symbol,STM32L442KCU6 comment,MCU part identity,MEAS-REQ,STM32L432/L442 datasheet required,Confirm package before AF signoff,SchDoc inventory and firmware naming disagree,P0
+ADS1298,BLE_BG22A3,RF-BM-BG22A3 TX/RX/RTS/CTS/LINK/RESET,MCU UART2/GPIO,Module-specific 3.3V and flow control,MEAS-REQ,BG22A3 datasheet required,Keep antenna keepout and verify RTS direction,SchDoc inventory shows BG22A3; A1 guide is related only,REVIEW
+ADS1299,BLE_BG22A3,RF-BM-BG22A TX/RX/LINK/RESET,MCU USART2,Module-specific 3.3V and flow control,MEAS-REQ,BG22A3 datasheet required,Keep antenna keepout and verify RTS direction,SchDoc comment BG22A3,REVIEW
+ADS1292,AVDD,AVDD,3V analog rail,10uF+0.1uF,DS-REQ/TI-TYP,p.3-6;60,Quiet analog island,Netlist pending,OPEN
+ADS1292,DVDD,DVDD,1.8V digital rail,10uF+0.1uF,DS-REQ/TI-TYP,p.3-6;60,Check MCU logic levels,Netlist pending,OPEN
+ADS1292,VCAP1,VCAP1 pin 11,AVSS,about 10uF,TI-TYP,p.11-12;60-61,Use non-ferroelectric under vibration,Netlist pending,OPEN
+ADS1292,VCAP2,VCAP2 pin 27,AVSS,1uF,TI-TYP,p.11-12;60-61,Place at pin,Netlist pending,OPEN
+ADS1292,PWDN_RESET,PWDN/RESET pin 15,MCU single control,defined high plus reset pulse,DS-REQ,p.11-12;31-32;62-63,One net only,Netlist pending,P0
+ADS1292,BLE_4044B4,RF-BM-4044B4 TX/RX/RTS/CTS/LINK/EN/RST,MCU UART/GPIO,Module-specific voltage and flow control,MEAS-REQ,4044B4 datasheet required,Keep antenna and high-speed lines away,SchDoc labels observed only,P0

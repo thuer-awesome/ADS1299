@@ -1,0 +1,25 @@
+version,reference_or_network,function,recommended_value,existing_or_observed,source_class,datasheet_page,dielectric_or_rating,layout_or_test_requirement,status
+ADS1299,C_VCAP1,internal bypass,100uF,10uF and 22uF candidates observed; net not proven,DS-REQ/TI-TYP,p.70-71,low-microphonic tantalum or polymer preferred; C0G/NP0 only for small bypass values,Place at pin and probe TP_VCAP1,P0
+ADS1299,C_VCAP2,internal bypass,1uF,1uF,TI-TYP,p.70-71,low leakage ceramic,No external load,OPEN
+ADS1299,C_VCAP3,internal bypass,1uF+0.1uF,1uF+0.1uF,TI-TYP,p.70-71,C0G/NP0 where practical,Place at pin,OPEN
+ADS1299,C_VCAP4,internal bypass,1uF,1uF,TI-TYP,p.70-71,low leakage ceramic,Place at pin,OPEN
+ADS1299,C_VREFP,reference bypass,>=10uF to VREFN,10uF noted,DS-REQ/TI-TYP,p.24;70-71,low leakage,Short return to VREFN/AVSS,OPEN
+ADS1299,C_AVDD/C_DVDD,supply bypass,10uF+0.1uF each,10uF/0.1uF strings seen,DS-REQ,p.70-71,solid ceramic,0.1uF same layer,OPEN
+ADS1299,AVDD rail,analog supply,5.0V nominal,3.3V LDO exists in project,DS-REQ,p.8,low-noise regulator,Measure 4.75-5.25V under load,P0
+ADS1299,DVDD rail,digital supply,3.3V,3.3V LDO,DS-REQ,p.8,1.8-3.6V,Separate return from AVDD,OPEN
+ADS1299,R_BIASOUT/C_BIASOUT,BIAS output stability,1Mohm+1.5nF,values appear in notes,TI-TYP,p.33-37,>=5V resistor rating,Test resistor model before electrodes,OPEN
+ADS1299,R_BIAS_SENSE,channel sense,220kohm each,project value suspected,TI-TYP,p.33-37,low noise,Provide 0-ohm substitution,OPEN
+ADS1298,C_VCAP1,internal bypass,22uF,C171=22uF candidate near 1-VCAP1 label; net confirmation pending,TI-TYP,p.96-97,non-ferroelectric in vibration,Audit BOM and footprint,REVIEW
+ADS1298,C_VCAP2/3/4,internal bypass,about 1uF,1uF values shown,TI-TYP,p.96-97,low leakage,Place at pins,OPEN
+ADS1298,C_SUPPLY,supply bypass,10uF+0.1uF,values vary by sheet,TI-TYP,p.96-97,solid ceramic,Probe rail ripple,OPEN
+ADS1298,AVDD rail,analog supply,3V or 5V selected,project rail pending,DS-REQ,p.12;96,low-noise regulator,Recalculate VREF and input range,OPEN
+ADS1292,C_VCAP1,internal bypass,about 10uF,project value pending,TI-TYP,p.60-61,low-microphonic tantalum or polymer preferred in vibration; C0G/NP0 only for small bypass values,Probe settling and ripple,OPEN
+ADS1292,C_VCAP2,internal bypass,1uF,project value pending,TI-TYP,p.60-61,low leakage,Place at pin,OPEN
+ADS1292,C_CFILTER,PGA output filter,4.7nF,shown in Figure 60/61,TI-TYP,p.21-23;60,prefer C0G/NP0,Do not confuse with input RC,OPEN
+ADS1292,C_SUPPLY,supply bypass,10uF+0.1uF,project value pending,DS-REQ,p.60,solid ceramic,AVDD/DVDD local,OPEN
+ADS1292,AVDD rail,analog supply,3.0V nominal,project rail pending,DS-REQ/TI-TYP,p.3-6;60,low-noise regulator,Check MCU level compatibility,OPEN
+ADS1292,DVDD rail,digital supply,1.8V nominal,project rail pending,DS-REQ/TI-TYP,p.3-6;60,1.8V logic,Check L432 GPIO VIH/VIL,OPEN
+BLE,BG22A VCC,module supply,3.3V,3.3V LDO,DS-REQ,p.7 hardware guide,2.2uF+0.1uF local,Measure TX current droop,OPEN
+BLE,RF-BM-4044B4 VCC,module supply,unknown until datasheet,3.3V rail appears in schematic,MEAS-REQ,4044B4 datasheet required,Use module-specific decoupling and voltage limits,Obtain datasheet before assembly,P0
+POWER,XC6206P33,3.3V LDO,200mA class,component present,PROJ-REC,XC6206 datasheet,Follow input/output ESR limits,Must not feed ADS1299 AVDD directly,P0
+POWER,ADS1299 analog regulator,5V low-noise rail,5V separate from 3.3V,not evidenced,DS-REQ/PROJ-REC,p.8;70-71,load and thermal rating,Validate battery/charger headroom,P0
