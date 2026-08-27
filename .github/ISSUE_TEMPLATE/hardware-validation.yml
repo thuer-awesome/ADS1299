@@ -1,0 +1,33 @@
+name: Hardware validation
+description: Record an ADS129x electrical, PCB, power, RLD or BLE validation issue
+title: "[validation] "
+labels: [validation]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: ADS1292 DV1.7.8, ADS1298 DV2.4.1 or ADS1299 DV4.0.2
+    validations:
+      required: true
+  - type: textarea
+    id: observation
+    attributes:
+      label: Observation
+      description: Include board revision, firmware commit and instrument settings. Redact serial numbers and MAC addresses.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Link CSV, scope capture, logic trace or netlist path.
+    validations:
+      required: true
+  - type: textarea
+    id: datasheet
+    attributes:
+      label: Datasheet traceability
+      description: Cite the exact datasheet page, table or figure.
+    validations:
+      required: true

@@ -1,0 +1,40 @@
+# Keil / STM32 build products
+**/Listings/
+**/Objects/
+**/*.axf
+**/*.hex
+**/*.map
+**/*.o
+**/*.obj
+**/*.d
+**/*.crf
+**/*.dep
+**/*.bak
+**/*.iex
+
+# Altium generated and temporary files
+**/__Previews__/
+**/Project Logs for */
+**/*.PrjPCBStructure
+**/*.NET
+**/*.REP
+**/*.tmp
+
+# Python and editor state
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.vscode/
+.idea/
+
+# Large experiment outputs stay out of Git until reviewed and indexed
+data/processed/*.bin
+data/processed/*.wav
+data/processed/*.sal
+data/processed/*.wfm
+tests/results/*
+!tests/results/README.md
+validation/results/*
+!validation/results/README.md
